@@ -15,7 +15,7 @@ object Constants {
         "Entertainment: Musicals & Theatres",
         "Entertainment: Television",
         "Entertainment: Video Games",
-        " Entertainment: Board Games",
+        "Entertainment: Board Games",
         "Science & nature",
         "Science: Computers",
         "Science: Mathematics",
@@ -37,17 +37,17 @@ object Constants {
     val categoriesMap= mapOf(
         "General Knowledge" to 9,
         "Entertainment: Books" to 10,
-        "Entertainment: Film" to 11,
+        "Entertainment: Films" to 11,
         "Entertainment: Music" to 12,
         "Entertainment: Musicals & Theatres" to 13,
         "Entertainment: Television" to 14,
-        "Entertainment :Video Games" to 15,
+        "Entertainment: Video Games" to 15,
         "Entertainment: Board Games" to 16,
 
 
-        "Science & Nature" to 17,
+        "Science & nature" to 17,
 
-        "Science: Computer" to 18,
+        "Science: Computers" to 18,
         "Science: Mathematics" to 19,
         "Mythology" to 20,
 
@@ -57,7 +57,7 @@ object Constants {
 
         "History" to 23,
 
-        " Politics" to 24,
+        "Politics" to 24,
 
         "Art" to 25,
 
@@ -69,11 +69,11 @@ object Constants {
 
         "Entertainment: Comics" to 29,
 
-        "Science & Gadgets" to 30,
+        "Science: Gadgets" to 30,
 
         "Entertainment: Japanese Anime & Manga" to 31,
 
-        "Entertainment:  Cartoon & Animations" to 32,
+        "Entertainment: Cartoon & Animations" to 32,
 
         )
 
