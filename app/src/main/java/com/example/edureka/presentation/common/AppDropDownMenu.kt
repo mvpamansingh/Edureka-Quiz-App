@@ -32,17 +32,18 @@ import com.example.edureka.presentation.Utils.Dimens
 import com.example.edureka.presentation.Utils.Dimens.SmallSpacerHeight
 
 
-@Composable
-fun Prev()
-{
-    val list= listOf("Item 1", "Item 2")
-    AppDropDownMenu(menuName = "Drop Down", menuList = list, onDropDownClick = {})
-}
+//@Composable
+//fun Prev()
+//{
+//    val list= listOf("Item 1", "Item 2")
+//    AppDropDownMenu(menuName = "Drop Down", menuList = list, onDropDownClick = {})
+//}
 
 @Composable
 fun AppDropDownMenu(
     menuName:String,
     menuList:List<String>,
+    text:String,
     onDropDownClick:(String)-> Unit
 )
 {
@@ -78,7 +79,7 @@ fun AppDropDownMenu(
             Modifier
                 .menuAnchor()
                 .fillMaxWidth()
-                ,value = selectedText, onValueChange ={}
+                ,value = text, onValueChange ={}
             , readOnly = true,
                 trailingIcon={
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
@@ -107,7 +108,7 @@ fun AppDropDownMenu(
                     DropdownMenuItem(
                         text = { Text(text = text,color= colorResource(id = R.color.blue_grey)) },
                         onClick = {
-                            selectedText= menuList[index]
+                           onDropDownClick(menuList[index])
                             isExpanded= false
                         },
                         contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding

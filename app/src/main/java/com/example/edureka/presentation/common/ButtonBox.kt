@@ -1,6 +1,7 @@
 package com.example.edureka.presentation.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,13 +22,14 @@ import com.example.edureka.presentation.Utils.Dimens
 @Composable
 fun ButtonBox(
     text:String,
-    padding: Dp
+    padding: Dp,
+    onButtonClick: ()->Unit
 )
 {
     Box(
         modifier = Modifier
             .padding(padding)
-            .fillMaxWidth()
+            .fillMaxWidth().clickable { onButtonClick() }
             .height(Dimens.MediumBoxHeight)
             .clip(RoundedCornerShape(Dimens.LargeCornerRadius))
             .background(
@@ -40,7 +42,7 @@ fun ButtonBox(
         Text(text = text,
             fontSize = Dimens.MediumTextSize,
             style= MaterialTheme.typography.labelMedium.copy(
-                fontWeight = FontWeight.SemiBold,
-            ))
+                fontWeight = FontWeight.SemiBold,)
+            )
     }
 }
