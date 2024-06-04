@@ -36,13 +36,14 @@ import com.example.edureka.presentation.Utils.Dimens.SmallSpacerHeight
 fun Prev()
 {
     val list= listOf("Item 1", "Item 2")
-    AppDropDownMenu(menuName = "Drop Down", menuList = list)
+    AppDropDownMenu(menuName = "Drop Down", menuList = list, onDropDownClick = {})
 }
 
 @Composable
 fun AppDropDownMenu(
     menuName:String,
-    menuList:List<String>
+    menuList:List<String>,
+    onDropDownClick:(String)-> Unit
 )
 {
 

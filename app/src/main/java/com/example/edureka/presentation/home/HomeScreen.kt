@@ -32,16 +32,16 @@ fun HomeScreen() {
         HomeHeader()
 
         Spacer(modifier = Modifier.height(Dimens.MediumSpacerHeight))
-       AppDropDownMenu(menuName="Number of Questions: ", menuList= Constants.numberAsString)
+       AppDropDownMenu(menuName="Number of Questions: ", menuList= Constants.numberAsString, onDropDownClick = {})
 
         Spacer(modifier = Modifier.height(SmallSpacerHeight))
-        AppDropDownMenu(menuName="Select Category: ", menuList= Constants.categories)
+        AppDropDownMenu(menuName="Select Category: ", menuList= Constants.categories, onDropDownClick = {})
 
         Spacer(modifier = Modifier.height(SmallSpacerHeight))
-        AppDropDownMenu(menuName="Select Difficulty: ", menuList= difficulty)
+        AppDropDownMenu(menuName="Select Difficulty: ", menuList= difficulty, onDropDownClick = {})
 
         Spacer(modifier = Modifier.height(SmallSpacerHeight))
-        AppDropDownMenu(menuName="Select Types: ", menuList= Constants.type)
+        AppDropDownMenu(menuName="Select Types: ", menuList= Constants.type, onDropDownClick ={})
 
         Spacer(modifier= Modifier.height(MediumSpacerHeight))
 
