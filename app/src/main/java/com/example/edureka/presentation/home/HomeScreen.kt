@@ -9,6 +9,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.example.edureka.navgraph.Routes
 import com.example.edureka.presentation.Utils.Constants
 import com.example.edureka.presentation.Utils.Constants.difficulty
 import com.example.edureka.presentation.Utils.Dimens
@@ -22,7 +24,8 @@ import com.example.edureka.presentation.home.components.HomeHeader
 @Composable
 fun HomeScreen(
     state :StateHomeScreen,
-    event:(EventHomeScreen)->Unit
+    event:(EventHomeScreen)->Unit,
+    navController: NavController
 ) {
 
     Column(
@@ -49,6 +52,12 @@ fun HomeScreen(
 
         ButtonBox(text = "Generate Quiz", padding = Dimens.MediumPadding)
         {
+            navController.navigate(route = Routes.QuizScreen.passQuizParams(
+                state.numberOfQuiz,
+                state.category,
+                state.difficulty,
+                state.type
+            ))
             Log.d("answer", "${state.numberOfQuiz}  ${state.category}  ${state.difficulty}  ${state.type}")
         }
     }
