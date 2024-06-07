@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import com.example.edureka.R
+import com.example.edureka.presentation.Utils.Constants
 import com.example.edureka.presentation.Utils.Dimens
 import com.example.edureka.presentation.common.QuizAppBar
 
@@ -26,9 +28,26 @@ fun QuizScreen(
     numOfQuiz:Int,
     quizCategory:String,
     quizDifficulty:String,
+    quizType:String,
+    event:(EventQuizScreen)->Unit,
+    state:StateQuizScreen
 )
 {
+    LaunchedEffect(key1 = Unit) {
 
+        val difficulty= when(quizDifficulty)
+        {
+            "Hard"->"hard"
+            "Medium"->"medium"
+            else->"easy"
+        }
+        val type= when(quizType)
+        {
+            "Multiple Choice"->"multiple"
+            else->"boolean"
+        }
+        event(EventQuizScreen.GetQuizzes(numOfQuiz, Constants.categoriesMap[quizCategory]!!, difficulty, type))
+    }
 
 
     Column(
