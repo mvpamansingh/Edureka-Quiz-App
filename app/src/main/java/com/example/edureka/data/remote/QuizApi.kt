@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface QuizApi {
 
 
-    @GET
+    @GET("api.php")
     suspend fun getQuizzes(
         @Query("amount") amount:Int,
         @Query("category") category:Int,
