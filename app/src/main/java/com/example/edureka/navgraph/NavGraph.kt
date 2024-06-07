@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.edureka.presentation.home.HomeScreen
 import com.example.edureka.presentation.home.HomeScreenViewModel
 import com.example.edureka.presentation.quiz.QuizScreen
+import com.example.edureka.presentation.quiz.QuizViewModel
 
 
 @Composable
@@ -46,7 +47,12 @@ fun SetNavGraph()
             val category = it.arguments?.getString(ARG_KEY_QUIZ_CATEGORY)
             val difficulty = it.arguments?.getString(ARG_KEY_QUIZ_DIFFICULTY)
             val type = it.arguments?.getString(ARG_KEY_QUIZ_TYPE)
-            QuizScreen(numOfQuiz =numOfQuizzes!! , quizCategory =category!! , quizDifficulty = difficulty!!)
+
+            val quizViewModel:QuizViewModel = hiltViewModel()
+            val state by quizViewModel.quizList.collectAsState()
+            QuizScreen(numOfQuiz =numOfQuizzes!! , quizCategory =category!! , quizDifficulty = difficulty!!, quizType =type!!,
+                event =quizViewModel::onEvent  , state =state
+            )
 
         }
 
