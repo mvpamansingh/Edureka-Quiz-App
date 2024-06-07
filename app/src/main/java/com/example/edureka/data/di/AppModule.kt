@@ -21,10 +21,13 @@ object AppModule {
     @Singleton
     fun provideQuizApi(): QuizApi {
         return Retrofit.Builder()
-            .baseUrl("https://opentdb.com/api.php")
+            .baseUrl("https://opentdb.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(QuizApi::class.java)
     }
+
+    @Provides
+    @Singleton
     fun provideQuizRepository(quizApi: QuizApi):QuizRepository{
 
         return QuizRepositoryImpl(quizApi)
