@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -20,7 +21,9 @@ import androidx.compose.ui.res.colorResource
 import com.example.edureka.R
 import com.example.edureka.presentation.Utils.Constants
 import com.example.edureka.presentation.Utils.Dimens
+import com.example.edureka.presentation.common.ButtonBox
 import com.example.edureka.presentation.common.QuizAppBar
+import com.example.edureka.presentation.quiz.component.QuizInterface
 
 
 @Composable
@@ -94,7 +97,27 @@ fun QuizScreen(
 
             // quiz interface
 
+            QuizInterface(modifier= Modifier.weight(1f),onOptionSelected = {}, qNumber = 1)
 
+
+            Row(
+                modifier= Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = Dimens.MediumPadding)
+                    .navigationBarsPadding()
+            )
+            {
+                ButtonBox(text = "Previous",
+                    padding =Dimens.SmallPadding,
+                    fraction= 0.43f,
+                    fontSize= Dimens.SmallTextSize) {
+
+                }
+
+
+
+
+            }
         }
 
     }
