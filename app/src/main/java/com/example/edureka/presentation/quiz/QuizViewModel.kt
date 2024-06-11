@@ -1,9 +1,9 @@
 package com.example.edureka.presentation.quiz
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.edureka.common.Resource
+import com.example.edureka.domain.model.Quiz
 import com.example.edureka.domain.usecases.GetQuizUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,19 +51,36 @@ class QuizViewModel @Inject constructor(
                     }
 
                     is Resource.Success ->{
-                        for(quiz in resource.data!!)
-                        {
-                            Log.d("quiz", quiz.toString())
 
-                        }
 
-                        _quizList.value = StateQuizScreen(data= resource.data)
+                        val listOfQuizState:List<QuizState> = getListOfQuizState(resource.data)
+                        _quizList.value = StateQuizScreen(quizState = listOfQuizState)
                     }
                 }
             }
         }
 
 
+    }
+
+    private fun getListOfQuizState(data: List<Quiz>?): List<QuizState> {
+
+        val listOfQuizState = mutableListOf<QuizState>()
+
+
+        for(quiz in data!!)
+        {
+            val shuffledOptions = mutableListOf<String>().apply{
+                add(quiz.correct_answer)
+                addAll(quiz.incorrect_answers)
+
+                shuffle()
+            }
+
+            listOfQuizState.add(QuizState(quiz,shuffledOptions, -1))
+        }
+
+        return listOfQuizState
     }
 
 
