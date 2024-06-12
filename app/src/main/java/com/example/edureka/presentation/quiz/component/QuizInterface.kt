@@ -16,17 +16,19 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.edureka.R
 import com.example.edureka.presentation.Utils.Dimens
+import com.example.edureka.presentation.quiz.QuizState
 
 @Composable
 fun QuizInterface(
     onOptionSelected: (Int) -> Unit,
     qNumber:Int,
+    quizState: QuizState,
     modifier: Modifier= Modifier
 )
 {
 
 
-
+    val question = quizState.quiz?.question!!.replace("&quot;", "\"").replace("&#039;", "\'")
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
@@ -48,7 +50,7 @@ fun QuizInterface(
                 
                 Text(
                     modifier = Modifier.weight(9f)
-                    ,text ="Which Cartoon do you see ?",
+                    ,text = question,
                     color= colorResource(id = R.color.blue_grey),
                     fontSize = Dimens.MediumTextSize)
                 
@@ -61,20 +63,20 @@ fun QuizInterface(
             )) {
 
                 val option = listOf(
-                    "A" to "Pokemon",
-                    "B" to "Beyblade",
-                    "C" to "Oswald",
-                    "D" to "Dragon Tales"
+                    "A" to quizState.shuffledOptions[0].replace("&quot;", "\"").replace("&#039;", "\'"),
+                    "B" to quizState.shuffledOptions[1].replace("&quot;", "\"").replace("&#039;", "\'"),
+                    "C" to quizState.shuffledOptions[2].replace("&quot;", "\"").replace("&#039;", "\'"),
+                    "D" to quizState.shuffledOptions[3].replace("&quot;", "\"").replace("&#039;", "\'")
                 )
                 Column {
 
-                    option.forEachIndexed{index, pair ->
+                    option.forEachIndexed{index, (optionNumber, optionText) ->
 
-                        if(pair.second.isNotEmpty())
+                        if(optionText.isNotEmpty())
                         {
                             QuizOptions(
-                                optionNumber= pair.first,
-                                option= pair.second,
+                                optionNumber= optionNumber,
+                                option= optionText,
                                 selected= false,
                                 onOptionClick= {onOptionSelected(index)},
                                 onUnselectedOption= {onOptionSelected(-1)}
